@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const CardPeople = ({ people }) => {
 
+    const [liked, setLiked] = useState(false);
+
     return (
-        <nav className="navbar navbar-light bg-dark">
+        <div className="navbar navbar-light bg-dark">
             <div className="container">
 
                 <div className="card">
@@ -16,15 +19,31 @@ export const CardPeople = ({ people }) => {
                             objectFit: "cover"
                         }}
                     />
-                    <div className="card-body">
-                        <h5 className="card-title">{people.name}</h5>
+                    <div className="card-body" >
 
-                        <Link to={`/character/${people.uid}`} className="btn btn-primary">Learn More</Link>
-                        {/* <button>fav</button> */}
+                        <h5 className="card-title">{people.name}</h5>
+                        <div className="d-flex align-items-center w-100">
+                            <Link to={`/character/${people.uid}`} className="btn btn-outline-primary">Learn More</Link>
+                            <button
+                                className="btn ms-auto"
+                                onClick={() => setLiked(!liked)}
+                            >
+                                <span
+                                    style={{
+                                        color: liked ? "#ff4d4d" : "#ccc",
+                                        fontSize: "20px",
+                                    }}
+                                >
+                                    ♥
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-
             </div>
-        </nav>
+
+
+
+        </div>
     );
 };
