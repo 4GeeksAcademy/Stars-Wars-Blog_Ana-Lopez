@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom"
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 
 export const DetailPeople = () => {
@@ -28,14 +28,18 @@ export const DetailPeople = () => {
 
 
     return (
-        <div className="container">
+        <div className="container d-flex justify-content-center flex-column align-items-center">
 
-            <div className="card" style={{ width: "18rem;" }}>
+            <div className="card" style={{ width: "600px" }}>
                 <img
-                 src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${uid}.jpg`} 
-                    className="card-img-top" 
+                    src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${uid}.jpg`}
+                    className="card-img-top"
                     alt={personaje.name}
-                    style={{ height: "300px", objectFit: "cover" }}
+                    style={{
+                        height: "450px",
+                       
+                        objectFit: "contain"
+                    }}
                 />
                 <div className="card-body">
                     <h5 className="card-title">{personaje.name}</h5>

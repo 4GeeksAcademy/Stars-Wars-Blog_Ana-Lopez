@@ -54,7 +54,7 @@ export const Home= () => {
 		<div className="container">
 			<h2>Starwars </h2>
 			<h3>People</h3>
-			 <div className= "d-flex" style={{overflow: "auto"}}>
+			 <div className="d-flex gap-3 overflow-auto align-items-stretch">
 				{/* //mapeamos la carta */}
 				{store.character?.map((value, index) => {
 					return (
