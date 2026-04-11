@@ -1,48 +1,68 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 export const CardPeople = ({ people }) => {
 
-    const [liked, setLiked] = useState(false);
+    const { store, dispatch } = useGlobalReducer();
+    const isFavorite = store.favorites.includes(people.name);
 
     return (
-        <div className="navbar navbar-light bg-dark">
-            <div className="container">
+        <div className="bg-dark p-2">
 
-                <div className="card">
-                    <img
-                        src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${people.uid}.jpg`}
-                        className="card-img-top"
-                        style={{
-                            height: "300px",
-                            width: "250px",
-                            objectFit: "cover"
-                        }}
-                    />
-                    <div className="card-body" >
+            <div className="card" style={{ width: "18rem" }}>
 
-                        <h5 className="card-title">{people.name}</h5>
-                        <div className="d-flex align-items-center w-100">
-                            <Link to={`/character/${people.uid}`} className="btn btn-outline-primary">Learn More</Link>
-                            <button
-                                className="btn ms-auto"
-                                onClick={() => setLiked(!liked)}
+                <img
+                    src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${people.uid}.jpg`}
+                    className="card-img-top"
+                    alt={people.name}
+                    style={{
+                        height: "300px",
+                        objectFit: "cover"
+                    }}
+                />
+
+                <div className="card-body">
+
+                    <h5 className="card-title">{people.name}</h5>
+
+                    <div className="d-flex align-items-center w-100">
+
+                        <Link
+                            to={`/character/${people.uid}`}
+                            className="btn btn-outline-primary"
+                        >
+                            Learn More
+                        </Link>
+
+                        <button
+                            className="btn ms-auto"
+                            onClick={() => {
+                                if (isFavorite) {
+                                    dispatch({
+                                        type: "remove_favorite",
+                                        payload: people.name
+                                    });
+                                } else {
+                                    dispatch({
+                                        type: "add_favorite",
+                                        payload: people.name
+                                    });
+                                }
+                            }}
+                        >
+                            <span
+                                style={{
+                                    color: isFavorite ? "#ff4d4d" : "#ccc",
+                                    fontSize: "20px"
+                                }}
                             >
-                                <span
-                                    style={{
-                                        color: liked ? "#ff4d4d" : "#ccc",
-                                        fontSize: "20px",
-                                    }}
-                                >
-                                    ♥
-                                </span>
-                            </button>
-                        </div>
+                                ♥
+                            </span>
+                        </button>
+
                     </div>
+
                 </div>
             </div>
-
-
 
         </div>
     );
