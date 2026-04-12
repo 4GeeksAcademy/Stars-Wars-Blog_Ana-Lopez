@@ -11,6 +11,7 @@ import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { DetailPeople } from "./pages/DetailPeople.jsx";
 import { DetailPlanet } from "./pages/DetailPlanet.jsx";
+import { DetailVehicles } from "./pages/DetailVehicles.jsx";
 
 
 export const router = createBrowserRouter(
@@ -31,6 +32,7 @@ export const router = createBrowserRouter(
         {/* <Route path="/starwars" element={<Starwars />} /> */}
         <Route path="/character/:uid" element={ <DetailPeople />} /> 
         <Route path="/planets/:uid" element={ <DetailPlanet />} /> 
+        <Route path="/vehicles/:uid" element={ <DetailVehicles />} /> 
       </Route>
     )
 );
