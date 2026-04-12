@@ -10,21 +10,21 @@ export const DetailPeople = () => {
 
     const { uid } = useParams()
 
-    const [personaje, setPersonaje] = React.useState(null)
+    const [people, setpeople] = React.useState(null)
 
-    function detallePersonaje() {
+    function detallepeople() {
         fetch("https://www.swapi.tech/api/people/" + uid)
             .then(res => res.json())
-            .then(data => setPersonaje(data.result.properties))
+            .then(data => setpeople(data.result.properties))
             .catch(err => console.error(err))
     }
 
     useEffect(() => {
-        detallePersonaje()
+        detallepeople()
 
     }, [uid])
 
-    if (!personaje) return <p>Loading...</p>
+    if (!people) return <p>Loading...</p>
 
 
     return (
@@ -34,7 +34,7 @@ export const DetailPeople = () => {
                 <img
                     src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${uid}.jpg`}
                     className="card-img-top"
-                    alt={personaje.name}
+                    alt={people.name}
                     style={{
                         height: "450px",
                        
@@ -42,14 +42,14 @@ export const DetailPeople = () => {
                     }}
                 />
                 <div className="card-body">
-                    <h5 className="card-title">{personaje.name}</h5>
-                    <p className="card-text">Gender: {personaje.gender}</p>
+                    <h5 className="card-title">{people.name}</h5>
+                    <p className="card-text">Gender: {people.gender}</p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Height: {personaje.height}</li>
-                    <li className="list-group-item">Mass: {personaje.mass}</li>
-                    <li className="list-group-item">Hair color: {personaje.hair_color}</li>
-                    <li className="list-group-item">Eye color: {personaje.eye_color}</li>
+                    <li className="list-group-item">Height: {people.height}</li>
+                    <li className="list-group-item">Mass: {people.mass}</li>
+                    <li className="list-group-item">Hair color: {people.hair_color}</li>
+                    <li className="list-group-item">Eye color: {people.eye_color}</li>
                 </ul>
 
 
