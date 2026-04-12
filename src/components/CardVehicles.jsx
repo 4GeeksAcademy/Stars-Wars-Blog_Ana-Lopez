@@ -7,7 +7,7 @@ export const CardVehicles = ({ vehicles }) => {
     const isFavorite = store.favorites.includes(vehicles.name);
 
     return (
-        <div className="bg-dark p-2">
+        <div className="bg-light p-2">
 
             <div className="card" style={{ width: "18rem" }}>
 

@@ -78,10 +78,9 @@ export const Home = () => {
 	}, [])
 
 	return (
-		<div className="container">
-			<h2>Starwars </h2>
+		<div className="container mt-5">
 			<h3>People</h3>
-			<div className="d-flex gap-3 overflow-auto align-items-stretch">
+			<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
 				{/* //mapeamos la carta */}
 				{store.people.map((people) => (
 					<CardPeople key={people.uid} people={people} />
@@ -89,7 +88,7 @@ export const Home = () => {
 			</div>
 
 			<h3>Planets</h3>
-			<div className="d-flex gap-3 overflow-auto align-items-stretch">
+			<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
 				{/* //mapeamos la carta */}
 				{store.planets.map((planets) => (
 					<CardPlanets key={planets.uid} planets={planets} />
@@ -97,7 +96,7 @@ export const Home = () => {
 			</div>
 
 			<h3>Vehicles</h3>
-			<div className="d-flex gap-3 overflow-auto align-items-stretch">
+			<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
 				{/* //mapeamos la carta */}
 				{store.vehicles.map((vehicles) => (
 					<CardVehicles key={vehicles.uid} vehicles={vehicles} />

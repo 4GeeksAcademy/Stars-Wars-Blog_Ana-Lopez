@@ -28,7 +28,7 @@ export const DetailPeople = () => {
 
 
     return (
-        <div className="container d-flex justify-content-center flex-column align-items-center">
+        <div className="container d-flex justify-content-center flex-column align-items-center" style={{ minHeight: "80vh" }}>
 
             <div className="card" style={{ width: "600px" }}>
                 <img
@@ -55,7 +55,7 @@ export const DetailPeople = () => {
 
             </div>
             <Link to="/">
-                <button className="btn btn-primary">Back home</button>
+                <button className="btn btn-primary mt-5">Back home</button>
             </Link>
         </div>
     );
