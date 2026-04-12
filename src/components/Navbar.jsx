@@ -27,11 +27,11 @@ export const Navbar = () => {
 							store.favorites.map((fav, index) => (
 								<li
 									key={index}
-									className="dropdown-item d-flex justify-content-between"
+									className="dropdown-item d-flex justify-content-between align-items-center"
 								>{fav}
 
 								<button
-									className="btn btn-sm btn-danger"
+									className="btn"
 									onClick={() =>
 									dispatch({
 										type: "remove_favorite",
@@ -39,7 +39,7 @@ export const Navbar = () => {
 										})
 									}
 									>
-										x
+										<i className="fas fa-trash"></i>
 									</button>
 								</li>
 							))

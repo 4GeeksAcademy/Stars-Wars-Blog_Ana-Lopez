@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
-export const CardPeople = ({ people }) => {
+export const CardPlanets = ({ planets }) => {
 
     const { store, dispatch } = useGlobalReducer();
-    const isFavorite = store.favorites.includes(people.name);
+     const isFavorite = store.favorites.includes(planets.name);
 
     return (
         <div className="bg-dark p-2">
@@ -12,9 +12,9 @@ export const CardPeople = ({ people }) => {
             <div className="card" style={{ width: "18rem" }}>
 
                 <img
-                    src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${people.uid}.jpg`}
+                    src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/planets/${planets.uid}.jpg`}
                     className="card-img-top"
-                    alt={people.name}
+                    alt={planets.name}
                     style={{
                         height: "300px",
                         objectFit: "cover"
@@ -23,12 +23,12 @@ export const CardPeople = ({ people }) => {
 
                 <div className="card-body">
 
-                    <h5 className="card-title">{people.name}</h5>
+                    <h5 className="card-title">{planets.name}</h5>
 
                     <div className="d-flex align-items-center w-100">
 
                         <Link
-                            to={`/character/${people.uid}`}
+                            to={`/planets/${planets.uid}`}
                             className="btn btn-outline-primary"
                         >
                             Learn More
@@ -40,12 +40,12 @@ export const CardPeople = ({ people }) => {
                                 if (isFavorite) {
                                     dispatch({
                                         type: "remove_favorite",
-                                        payload: people.name
+                                        payload: planets.name
                                     });
                                 } else {
                                     dispatch({
                                         type: "add_favorite",
-                                        payload: people.name
+                                        payload: planets.name
                                     });
                                 }
                             }}

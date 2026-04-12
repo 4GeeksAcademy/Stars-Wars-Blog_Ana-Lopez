@@ -10,6 +10,7 @@ import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { DetailPeople } from "./pages/DetailPeople.jsx";
+import { DetailPlanet } from "./pages/DetailPlanet.jsx";
 
 
 export const router = createBrowserRouter(
@@ -29,6 +30,7 @@ export const router = createBrowserRouter(
         <Route path="/demo" element={<Demo />} />
         {/* <Route path="/starwars" element={<Starwars />} /> */}
         <Route path="/character/:uid" element={ <DetailPeople />} /> 
+        <Route path="/planets/:uid" element={ <DetailPlanet />} /> 
       </Route>
     )
 );

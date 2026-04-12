@@ -2,8 +2,9 @@ export const initialStore = () => {
   return {
     message: null,
 
-    character: [],
+    people: [],
     favorites: [],
+    planets: []
   }
 }
 
@@ -12,9 +13,9 @@ export default function storeReducer(store, action = {}) {
 
 
     case 'set_personajes':
-      const { personaje } = action.payload
       return {
-        ...store, character: personaje
+        ...store,
+        people: action.payload.people
       }
 
     case "add_favorite":
@@ -31,6 +32,13 @@ export default function storeReducer(store, action = {}) {
         favorites: store.favorites.filter(
           fav => fav !== action.payload
         )
+      };
+
+
+    case 'set_planets':
+      const { planets } = action.payload;
+      return {
+        ...store, planets: planets
       };
 
     default:
