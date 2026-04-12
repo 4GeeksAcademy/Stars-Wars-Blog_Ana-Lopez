@@ -30,9 +30,12 @@ export const Home = () => {
 
 	//Aqui llamamos a la funcion directamente al cargar la pagina
 	useEffect(() => {
-		cartaPersonajes()
-
+		if (store.people.length === 0) {
+			cartaPersonajes()
+		}
 	}, [])
+
+
 
 	async function cartaPlanetas() {
 		try {
@@ -51,59 +54,63 @@ export const Home = () => {
 			console.error("Error en cargar planetas:", error)
 		}
 	}
-	useEffect(() => {
+useEffect(() => {
+	if (store.planets.length === 0) {
 		cartaPlanetas()
-	}, [])
-
-
-	async function cartaVehiculos() {
-		try {
-			const response = await fetch("https://www.swapi.tech/api/vehicles/");
-			if (!response.ok) {
-				throw new Error(`Error al obtener vehiculos: ${response.statusText}`)
-			}
-			const data = await response.json()
-			const vehiculosBasico = data.results;
-			dispatch({
-				type: "set_vehicles",
-				payload: { vehicles: vehiculosBasico }
-			})
-
-		} catch (error) {
-			console.error("Error en cargar planetas:", error)
-		}
 	}
-	useEffect(() => {
+}, [])
+
+
+async function cartaVehiculos() {
+	try {
+		const response = await fetch("https://www.swapi.tech/api/vehicles/");
+		if (!response.ok) {
+			throw new Error(`Error al obtener vehiculos: ${response.statusText}`)
+		}
+		const data = await response.json()
+		const vehiculosBasico = data.results;
+		dispatch({
+			type: "set_vehicles",
+			payload: { vehicles: vehiculosBasico }
+		})
+
+	} catch (error) {
+		console.error("Error en cargar planetas:", error)
+	}
+}
+useEffect(() => {
+	if (store.vehicles.length === 0) {
 		cartaVehiculos()
-	}, [])
+	}
+}, [])
 
-	return (
-		<div className="container mt-5">
-			<h3>People</h3>
-			<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
-				{/* //mapeamos la carta */}
-				{store.people.map((people) => (
-					<CardPeople key={people.uid} people={people} />
-				))}
-			</div>
-
-			<h3>Planets</h3>
-			<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
-				{/* //mapeamos la carta */}
-				{store.planets.map((planets) => (
-					<CardPlanets key={planets.uid} planets={planets} />
-				))}
-			</div>
-
-			<h3>Vehicles</h3>
-			<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
-				{/* //mapeamos la carta */}
-				{store.vehicles.map((vehicles) => (
-					<CardVehicles key={vehicles.uid} vehicles={vehicles} />
-				))}
-			</div>
-	
+return (
+	<div className="container mt-5">
+		<h3>People</h3>
+		<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
+			{/* //mapeamos la carta */}
+			{store.people.map((people) => (
+				<CardPeople key={people.uid} people={people} />
+			))}
 		</div>
 
-	);
+		<h3>Planets</h3>
+		<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
+			{/* //mapeamos la carta */}
+			{store.planets.map((planets) => (
+				<CardPlanets key={planets.uid} planets={planets} />
+			))}
+		</div>
+
+		<h3>Vehicles</h3>
+		<div className="d-flex gap-3 overflow-auto align-items-stretch mb-5">
+			{/* //mapeamos la carta */}
+			{store.vehicles.map((vehicles) => (
+				<CardVehicles key={vehicles.uid} vehicles={vehicles} />
+			))}
+		</div>
+
+	</div>
+
+);
 }; 

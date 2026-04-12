@@ -1,13 +1,16 @@
 export const initialStore = () => {
-  return {
-    message: null,
 
-    people: [],
-    favorites: [],
-    planets: [],
-    vehicles:[]
-  }
-}
+  const savedStore = localStorage.getItem("starwarsStore");
+
+  return savedStore
+    ? JSON.parse(savedStore)
+    : {
+      people: [],
+      planets: [],
+      vehicles: [],
+      favorites: []
+    };
+};
 
 export default function storeReducer(store, action = {}) {
   switch (action.type) {
