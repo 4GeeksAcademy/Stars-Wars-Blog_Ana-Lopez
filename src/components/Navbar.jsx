@@ -28,32 +28,25 @@ export const Navbar = () => {
 				</Link>
 
 
-				<div className="position-relative">
-					<i
-						className="fas fa-search position-absolute"
-						style={{
-							left: "10px",
-							top: "50%",
-							transform: "translateY(-50%)",
-							color: "#999",
-							fontSize: "14px"
-						}}
-					></i>
+				<div className="position-relative" style={{ width: "300px" }}>
 
-					<input
-						type="text"
-						className="form-control ps-5"
-						placeholder="Search..."
-						value={search}
-						onChange={(e) => setSearch(e.target.value)}
-						style={{
-							borderRadius: "20px"
-						}}
-					/>
+				
+					<div className="input-group mb-3">
+						<span className="input-group-text">
+							<i className="fas fa-search"></i>
+						</span>
 
+						<input
+							type="text"
+							className="form-control"
+							placeholder="Search..."
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+						/>
+					</div>
 
 					{search && (
-						<ul className="list-group position-absolute w-100 mt-1">
+						<ul className="list-group position-absolute w-100">
 							{filtered.slice(0, 5).map(item => (
 								<li
 									key={item.uid}
@@ -62,6 +55,7 @@ export const Navbar = () => {
 										navigate(`/${item.type}/${item.uid}`);
 										setSearch("");
 									}}
+									style={{ cursor: "pointer" }}
 								>
 									{item.name}
 								</li>
@@ -70,8 +64,6 @@ export const Navbar = () => {
 					)}
 
 				</div>
-
-
 
 				<div className="dropdown">
 
