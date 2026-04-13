@@ -29,7 +29,6 @@ export const router = createBrowserRouter(
         <Route path= "/" element={<Home />} />
         <Route path="/single/:theId" element={ <Single />} />  {/* Dynamic route for single items */}
         <Route path="/demo" element={<Demo />} />
-        {/* <Route path="/starwars" element={<Starwars />} /> */}
         <Route path="/character/:uid" element={ <DetailPeople />} /> 
         <Route path="/planets/:uid" element={ <DetailPlanet />} /> 
         <Route path="/vehicles/:uid" element={ <DetailVehicles />} /> 
